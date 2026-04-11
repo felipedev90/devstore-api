@@ -18,6 +18,8 @@ export async function productRoutes(app: FastifyInstance) {
   });
 
   app.post("/products", async (request, reply) => {
+    // Valida os dados de criação do produto usando o Zod
+    // safeParse é usado para validar os dados e retornar um resultado que indica se a validação foi bem-sucedida ou não
     const result = createProductSchema.safeParse(request.body);
 
     if (!result.success) {
@@ -63,5 +65,17 @@ export async function productRoutes(app: FastifyInstance) {
     });
 
     return reply.send(product);
+  });
+
+  app.delete("/products/:id", async (request, reply) => {
+    const { id } = request.params as { id: string };
+
+    const existingProduct = await prisma.product.findUnique({ where: { id } });
+    if (!existingProduct) {
+      return reply.status(404).send({ error: "Product not found" });
+    }
+
+    await prisma.product.delete({ where: { id } });
+    return reply.status(204).send();
   });
 }

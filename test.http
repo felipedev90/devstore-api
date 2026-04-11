@@ -33,3 +33,6 @@ Content-Type: application/json
 {
   "price": 59.90
 }
+
+###
+DELETE http://localhost:3333/products/eb9b798d-d43b-46e0-a425-a3a52f41c8d4

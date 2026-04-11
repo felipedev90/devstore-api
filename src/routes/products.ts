@@ -25,4 +25,15 @@ export async function productRoutes(app: FastifyInstance) {
     const product = await prisma.product.create({ data: result.data });
     return reply.status(201).send(product);
   });
+
+  app.get("/products/:id", async (request, reply) => {
+    const { id } = request.params as { id: string };
+    
+    const product = await prisma.product.findUnique({ where: { id } });
+    
+    if (!product) {
+      return reply.status(404).send({ error: "Product not found" });
+    }
+    return reply.send(product);
+  });
 }

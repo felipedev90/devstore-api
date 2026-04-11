@@ -1,1 +1,13 @@
-GET http://localhost:3333/health
+###
+GET http://localhost:3333/products
+
+###
+POST http://localhost:3333/products
+Content-Type: application/json
+
+{
+  "name": "Camiseta Preta",
+  "price": 49.90,
+  "description": "Camiseta 100% algodão",
+  "stock": 10
+}

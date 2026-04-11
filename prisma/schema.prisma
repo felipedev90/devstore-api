@@ -1,0 +1,19 @@
+// Instrui o Prisma a gerar o client TS. É esse client que vai importar no código para fazer queries no banco;
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Diz pro prisma qual banco usar e como conectar. O env("DATABASE_URL") lê a variavel de ambiente que já configurei no .env;
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id          String   @id @default(uuid())
+  name        String
+  price       Float
+  description String
+  stock       Int
+  createdAt   DateTime @default(now())
+}

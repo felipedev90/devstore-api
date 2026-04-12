@@ -17,3 +17,10 @@ model Product {
   stock       Int
   createdAt   DateTime @default(now())
 }
+
+model User {
+  id          String    @id @default(uuid())
+  email       String    @unique
+  password    String
+  createdAt   DateTime  @default(now())
+}

@@ -36,3 +36,12 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:3333/products/eb9b798d-d43b-46e0-a425-a3a52f41c8d4
+
+###
+POST http://localhost:3333/register
+Content-Type: application/json
+
+{
+  "email": "felipe@teste.com",
+  "password": "123456"
+}

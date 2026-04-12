@@ -54,3 +54,35 @@ Content-Type: application/json
   "email": "felipe@teste.com",
   "password": "123456"
 }
+
+###
+POST http://localhost:3333/products
+Content-Type: application/json
+
+{
+  "name": "Tênis Nike",
+  "price": 299.90,
+  "description": "Tênis esportivo",
+  "stock": 5
+}
+
+###
+POST http://localhost:3333/login
+Content-Type: application/json
+
+{
+  "email": "felipe@teste.com",
+  "password": "123456"
+}
+
+###
+POST http://localhost:3333/products
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzYzJkZGY1Yi0zYTU4LTQ5MzEtODNhNy01Y2IyNzdmZDJmMmUiLCJpYXQiOjE3NzYwMzA2MzcsImV4cCI6MTc3NjAzNDIzN30.vNKpSk1Le-G6yCAg3TkZtS_bd2R32VWWOmAGwb56WX8
+
+{
+  "name": "Tênis Nike",
+  "price": 299.90,
+  "description": "Tênis esportivo",
+  "stock": 5
+}

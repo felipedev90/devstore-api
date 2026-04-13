@@ -100,3 +100,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzYzJkZ
     { "productId": "8dc08476-0ebf-4440-bdfc-55485780d4c6", "quantity": 2 }
   ]
 }
+
+###
+GET http://localhost:3333/products

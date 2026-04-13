@@ -86,3 +86,17 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzYzJkZ
   "description": "Tênis esportivo",
   "stock": 5
 }
+
+###
+GET http://localhost:3333/products
+
+###
+POST http://localhost:3333/orders
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzYzJkZGY1Yi0zYTU4LTQ5MzEtODNhNy01Y2IyNzdmZDJmMmUiLCJpYXQiOjE3NzYwOTY1NzgsImV4cCI6MTc3NjEwMDE3OH0.HmfrxdVxjb3Lz9i8ZI2zkVRNbBOetPIVJObzeSJDhFA
+
+{
+  "items": [
+    { "productId": "8dc08476-0ebf-4440-bdfc-55485780d4c6", "quantity": 2 }
+  ]
+}

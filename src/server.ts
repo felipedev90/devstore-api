@@ -3,8 +3,7 @@ import { env } from "./env";
 
 async function start() {
   try {
-    // await app.listen({ port: 3333, host: '0.0.0.0' }); => para aceitar conexões de fora do localhost
-    await app.listen({ port: Number(env.PORT) });
+    await app.listen({ port: Number(env.PORT), host: "0.0.0.0" });
     console.log(`Server is running on port ${env.PORT}`);
   } catch (err) {
     console.error("Error starting server:", err);

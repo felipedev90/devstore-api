@@ -5,9 +5,17 @@ import z from "zod";
 
 const createProductSchema = z.object({
   name: z.string(),
-  price: z.number(),
   description: z.string(),
+  price: z.number(),
+  originalPrice: z.number().optional(),
+  slug: z.string(),
+  images: z.array(z.string()),
+  category: z.string(),
+  tags: z.array(z.string()),
+  rating: z.number().optional(),
+  reviewCount: z.number().int().optional(),
   stock: z.number().int(),
+  features: z.array(z.string()),
 });
 
 const updateProductSchema = createProductSchema.partial();

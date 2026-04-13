@@ -6,6 +6,7 @@ import jwt from "jsonwebtoken";
 import { env } from "../env";
 
 const registerSchema = z.object({
+  name: z.string().min(2),
   email: z.string().email(),
   password: z.string().min(6),
 });
@@ -18,7 +19,7 @@ const loginSchema = z.object({
 export async function authRoutes(app: FastifyInstance) {
   app.post("/register", async (request, reply) => {
     // Valida os dados de registro usando o Zod
-    const { email, password } = registerSchema.parse(request.body);
+    const { name, email, password } = registerSchema.parse(request.body);
 
     // Verifica se o email já está em uso
     const existingUser = await prisma.user.findUnique({ where: { email } });
@@ -32,6 +33,7 @@ export async function authRoutes(app: FastifyInstance) {
     // Cria um novo usuário no banco de dados usando o Prisma
     const user = await prisma.user.create({
       data: {
+        name,
         email,
         password: hashedPassword,
       },

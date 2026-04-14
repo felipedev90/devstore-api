@@ -2,26 +2,26 @@
 
 API REST completa para e-commerce, desenvolvida como backend do projeto [DevStore](https://dev-store-zeta.vercel.app).
 
-## 🚀 Deploy
+## Deploy
 
 **Base URL:** `https://devstore-api-production.up.railway.app`
 
 ---
 
-## 🛠️ Tecnologias
+## Tecnologias
 
 - **Node.js** + **TypeScript**
-- **Fastify** — framework web
-- **PostgreSQL** — banco de dados relacional
-- **Prisma ORM** — queries tipadas e migrations
-- **Zod** — validação de dados e variáveis de ambiente
-- **JWT** — autenticação stateless
-- **bcrypt** — hash de senhas
-- **Railway** — deploy e banco em produção
+- **Fastify** - framework web
+- **PostgreSQL** - banco de dados relacional
+- **Prisma ORM** - queries tipadas e migrations
+- **Zod** - validação de dados e variáveis de ambiente
+- **JWT** - autenticação stateless
+- **bcrypt** - hash de senhas
+- **Railway** - deploy e banco em produção
 
 ---
 
-## 📋 Endpoints
+## Endpoints
 
 ### Público
 
@@ -48,7 +48,7 @@ API REST completa para e-commerce, desenvolvida como backend do projeto [DevStor
 
 ---
 
-## 🔐 Autenticação
+## Autenticação
 
 Rotas protegidas exigem token JWT no header:
 
@@ -60,7 +60,7 @@ Obtenha o token fazendo login em `POST /login`. O token expira em **1 hora**.
 
 ---
 
-## ▶️ Rodando localmente
+## Rodando localmente
 
 **Pré-requisitos:** Node.js 18+, PostgreSQL
 
@@ -88,17 +88,17 @@ npm run dev
 
 ---
 
-## ⚙️ Variáveis de ambiente
+## Variáveis de ambiente
 
 ```env
 PORT=3333
 DATABASE_URL=postgresql://...
-JWT_SECRET=sua-chave-secreta
+JWT_SECRET=CHANGE_ME
 ```
 
 ---
 
-## 📦 Exemplos de uso
+## Exemplos de uso
 
 ### Cadastro
 
@@ -149,23 +149,23 @@ Authorization: Bearer <token>
 
 ---
 
-## 🗄️ Modelo de dados
+## Modelo de dados
 
 ```
-Product     — id, slug, name, description, price, originalPrice,
+Product     - id, slug, name, description, price, originalPrice,
               images, category, tags, rating, reviewCount,
               stock, features, createdAt
 
-Category    — slug, name, description, image
+Category    - slug, name, description, image
 
-User        — id, name, email, password, createdAt
+User        - id, name, email, password, createdAt
 
-Order       — id, userId, createdAt
-OrderItem   — id, orderId, productId, quantity, price
+Order       - id, userId, createdAt
+OrderItem   - id, orderId, productId, quantity, price
 ```
 
 ---
 
-## 👨‍💻 Autor
+## Autor
 
 **Felipe Silva** - [LinkedIn](https://www.linkedin.com/in/felipesilva90) · [GitHub](https://github.com/felipedev90)

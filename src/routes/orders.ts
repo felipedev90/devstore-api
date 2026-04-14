@@ -42,4 +42,18 @@ export async function orderRoutes(app: FastifyInstance) {
 
     return reply.status(201).send(order);
   });
+
+  app.get("/orders", { preHandler: authenticate }, async (request, reply) => {
+    const orders = await prisma.order.findMany({
+      where: { userId: request.userId },
+      include: {
+        items: {
+          include: {
+            product: true,
+          },
+        },
+      },
+    });
+    return reply.send(orders);
+  });
 }

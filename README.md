@@ -30,6 +30,8 @@ API REST completa para e-commerce, desenvolvida como backend do projeto [DevStor
 | GET | /health | Status da API |
 | GET | /products | Lista todos os produtos |
 | GET | /products/:id | Busca produto por ID |
+| GET | /categories | Lista todas as categorias |
+| GET | /categories/:slug | Busca categoria por slug |
 | POST | /register | Cadastro de usuário |
 | POST | /login | Login — retorna token JWT |
 
@@ -41,6 +43,8 @@ API REST completa para e-commerce, desenvolvida como backend do projeto [DevStor
 | PATCH | /products/:id | Atualiza produto |
 | DELETE | /products/:id | Remove produto |
 | POST | /orders | Cria pedido |
+| GET | /orders | Lista pedidos do usuário |
+| GET | /orders/:id | Detalhe de um pedido |
 
 ---
 
@@ -48,9 +52,11 @@ API REST completa para e-commerce, desenvolvida como backend do projeto [DevStor
 
 Rotas protegidas exigem token JWT no header:
 
+```
 Authorization: Bearer <token>
+```
 
-Obtenha o token fazendo login em `POST /login`.
+Obtenha o token fazendo login em `POST /login`. O token expira em **1 hora**.
 
 ---
 
@@ -73,7 +79,7 @@ cp .env.example .env
 # Execute as migrations
 npx prisma migrate dev
 
-# Popule o banco com produtos
+# Popule o banco com produtos e categorias
 npx prisma db seed
 
 # Inicie o servidor
@@ -101,6 +107,7 @@ POST /register
 Content-Type: application/json
 
 {
+  "name": "Felipe",
   "email": "usuario@email.com",
   "password": "123456"
 }
@@ -127,9 +134,34 @@ Content-Type: application/json
 
 {
   "items": [
-    { "productId": "uuid-do-produto", "quantity": 2 }
+    { "productId": "prod-001", "quantity": 2 },
+    { "productId": "prod-004", "quantity": 1 }
   ]
 }
+```
+
+### Listar pedidos
+
+```http
+GET /orders
+Authorization: Bearer <token>
+```
+
+---
+
+## 🗄️ Modelo de dados
+
+```
+Product     — id, slug, name, description, price, originalPrice,
+              images, category, tags, rating, reviewCount,
+              stock, features, createdAt
+
+Category    — slug, name, description, image
+
+User        — id, name, email, password, createdAt
+
+Order       — id, userId, createdAt
+OrderItem   — id, orderId, productId, quantity, price
 ```
 
 ---

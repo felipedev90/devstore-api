@@ -4,6 +4,7 @@ const prisma = new PrismaClient();
 
 async function main() {
   await prisma.product.createMany({
+    skipDuplicates: true,
     data: [
       {
         id: "prod-001",
@@ -452,6 +453,7 @@ async function main() {
     ],
   });
   await prisma.category.createMany({
+    skipDuplicates: true,
     data: [
       {
         slug: "keyboards",

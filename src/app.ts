@@ -2,6 +2,7 @@ import fastify from "fastify";
 import { productRoutes } from "./routes/products";
 import { authRoutes } from "./routes/auth";
 import { orderRoutes } from "./routes/orders";
+import { categoryRoutes } from "./routes/categories";
 import cors from "@fastify/cors";
 
 export const app = fastify();
@@ -17,3 +18,4 @@ app.register(cors, {
 app.register(productRoutes);
 app.register(authRoutes);
 app.register(orderRoutes);
+app.register(categoryRoutes);

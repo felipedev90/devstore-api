@@ -1,8 +1,21 @@
 import { PrismaClient } from "@prisma/client";
+import bcrypt from "bcryptjs";
 
 const prisma = new PrismaClient();
 
 async function main() {
+  // Garante que o usuário demo existe (upsert é idempotente)
+  const hashedPassword = await bcrypt.hash("demodemo", 10);
+  await prisma.user.upsert({
+    where: { email: "demo@devstore.dev" },
+    update: {},
+    create: {
+      name: "Recrutador Demo",
+      email: "demo@devstore.dev",
+      password: hashedPassword,
+    },
+  });
+
   await prisma.product.createMany({
     skipDuplicates: true,
     data: [
@@ -490,7 +503,7 @@ async function main() {
     ],
   });
 
-  console.log("Seed concluído — 18 produtos inseridos.");
+  console.log("Seed concluído — 18 produtos e usuário demo inseridos.");
 }
 
 main()

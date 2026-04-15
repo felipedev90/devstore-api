@@ -21,6 +21,18 @@ const createProductSchema = z.object({
 const updateProductSchema = createProductSchema.partial();
 
 export async function productRoutes(app: FastifyInstance) {
+  app.get("/products/slug/:slug", async (request, reply) => {
+    const { slug } = request.params as { slug: string };
+
+    const product = await prisma.product.findFirst({ where: { slug } });
+
+    if (!product) {
+      return reply.status(404).send({ error: "Produto não encontrado" });
+    }
+
+    return reply.send(product);
+  });
+
   app.get("/products", async (request, reply) => {
     const products = await prisma.product.findMany();
     return reply.send(products);

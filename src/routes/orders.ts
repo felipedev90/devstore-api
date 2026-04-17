@@ -14,6 +14,8 @@ const createOrderSchema = z.object({
 
 export async function orderRoutes(app: FastifyInstance) {
   app.post("/orders", { preHandler: authenticate }, async (request, reply) => {
+    // Validação dos dados de entrada usando Zod
+    // O método safeParse retorna um objeto com a propriedade success indicando se a validação foi bem-sucedida ou não
     const result = createOrderSchema.safeParse(request.body);
 
     if (!result.success) {

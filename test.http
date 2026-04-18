@@ -1,47 +1,9 @@
 ###
-GET http://localhost:3333/products
-
-###
-POST http://localhost:3333/products
-Content-Type: application/json
-
-{
-  "name": "Camiseta Preta",
-  "price": 49.90,
-  "description": "Camiseta 100% algodão",
-  "stock": 10
-}
-
-###
-GET http://localhost:3333/products/eb9b798d-d43b-46e0-a425-a3a52f41c8d4
-
-###
-GET http://localhost:3333/products/id-falso
-
-###
-PATCH http://localhost:3333/products/eb9b798d-d43b-46e0-a425-a3a52f41c8d4
-Content-Type: application/json
-
-{
-  "price": 59.90
-}
-
-###
-PATCH http://localhost:3333/products/id-falso
-Content-Type: application/json
-
-{
-  "price": 59.90
-}
-
-###
-DELETE http://localhost:3333/products/eb9b798d-d43b-46e0-a425-a3a52f41c8d4
-
-###
 POST http://localhost:3333/register
 Content-Type: application/json
 
 {
+  "name": "Felipe",
   "email": "felipe@teste.com",
   "password": "123456"
 }
@@ -53,38 +15,6 @@ Content-Type: application/json
 {
   "email": "felipe@teste.com",
   "password": "123456"
-}
-
-###
-POST http://localhost:3333/products
-Content-Type: application/json
-
-{
-  "name": "Tênis Nike",
-  "price": 299.90,
-  "description": "Tênis esportivo",
-  "stock": 5
-}
-
-###
-POST http://localhost:3333/login
-Content-Type: application/json
-
-{
-  "email": "felipe@teste.com",
-  "password": "123456"
-}
-
-###
-POST http://localhost:3333/products
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzYzJkZGY1Yi0zYTU4LTQ5MzEtODNhNy01Y2IyNzdmZDJmMmUiLCJpYXQiOjE3NzYwMzA2MzcsImV4cCI6MTc3NjAzNDIzN30.vNKpSk1Le-G6yCAg3TkZtS_bd2R32VWWOmAGwb56WX8
-
-{
-  "name": "Tênis Nike",
-  "price": 299.90,
-  "description": "Tênis esportivo",
-  "stock": 5
 }
 
 ###
@@ -93,19 +23,37 @@ GET http://localhost:3333/products
 ###
 POST http://localhost:3333/orders
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzYzJkZGY1Yi0zYTU4LTQ5MzEtODNhNy01Y2IyNzdmZDJmMmUiLCJpYXQiOjE3NzYwOTY1NzgsImV4cCI6MTc3NjEwMDE3OH0.HmfrxdVxjb3Lz9i8ZI2zkVRNbBOetPIVJObzeSJDhFA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkMTExZGZlNy1iZDJkLTRmYTItYjRjZS1mMDFiMjUwOWViNjUiLCJpYXQiOjE3NzY1Mjc5MzUsImV4cCI6MTc3NjUzMTUzNX0.iUZW71RCHiNzvIXtBAj3TEPZSm2TXjeuYTq-uhbud74
 
 {
   "items": [
-    { "productId": "8dc08476-0ebf-4440-bdfc-55485780d4c6", "quantity": 2 }
+    {"productId": "prod-001", "quantity": 2 }
   ]
 }
 
 ###
-GET http://localhost:3333/products
+GET http://localhost:3333/orders/52013656-fff1-4c40-a829-2e091e094afb
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkMTExZGZlNy1iZDJkLTRmYTItYjRjZS1mMDFiMjUwOWViNjUiLCJpYXQiOjE3NzY1Mjc5MzUsImV4cCI6MTc3NjUzMTUzNX0.iUZW71RCHiNzvIXtBAj3TEPZSm2TXjeuYTq-uhbud74
 
 ###
-GET https://devstore-api-production.up.railway.app/health
+POST http://localhost:3333/register
+Content-Type: application/json
+
+{
+  "name": "Maria",
+  "email": "maria@teste.com",
+  "password": "123456"
+}
 
 ###
-GET https://devstore-api-production.up.railway.app/products
+POST http://localhost:3333/login
+Content-Type: application/json
+
+{
+  "email": "maria@teste.com",
+  "password": "123456"
+}
+
+###
+GET http://localhost:3333/orders/52013656-fff1-4c40-a829-2e091e094afb
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIyODE3MjkzNy05OTk5LTQ3N2EtYmY5Yy0xNzI2MWU1ZjRhODkiLCJpYXQiOjE3NzY1Mjg2OTgsImV4cCI6MTc3NjUzMjI5OH0.tl81L4DvinlNGt3vquT-yqiM-cZM5jyzdd3EswNHFNw

@@ -2,6 +2,7 @@ import { FastifyInstance } from "fastify";
 import { prisma } from "../lib/prisma";
 import { authenticate } from "../middlewares/authenticate";
 import z from "zod";
+import { error } from "node:console";
 
 const createOrderSchema = z.object({
   items: z.array(
@@ -28,11 +29,15 @@ export async function orderRoutes(app: FastifyInstance) {
       },
     });
 
+    // Extrai os IDs dos produtos dos itens do pedido
     const productsIds = result.data.items.map((item) => item.productId);
+
+    // Busca os produtos no banco de dados para obter os preços
     const products = await prisma.product.findMany({
       where: { id: { in: productsIds } },
     });
 
+    // Cria os itens do pedido associando o ID do pedido, ID do produto, quantidade e preço
     const orderItemsData = await prisma.orderItem.createMany({
       data: result.data.items.map((item) => ({
         orderId: order.id,
@@ -58,4 +63,29 @@ export async function orderRoutes(app: FastifyInstance) {
     });
     return reply.send(orders);
   });
+
+  app.get(
+    "/orders/:id",
+    { preHandler: authenticate },
+    async (request, reply) => {
+      const { id } = request.params as { id: string };
+
+      const order = await prisma.order.findUnique({
+        where: { id },
+        include: {
+          items: {
+            include: {
+              product: true,
+            },
+          },
+        },
+      });
+
+      if (!order || order.userId !== request.userId) {
+        return reply.status(404).send({ error: "Pedido não encontrado" });
+      }
+
+      return reply.send(order);
+    },
+  );
 }

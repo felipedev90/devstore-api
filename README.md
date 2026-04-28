@@ -4,7 +4,7 @@ API REST completa para e-commerce, desenvolvida como backend do projeto [DevStor
 
 ## Deploy
 
-**Base URL:** `https://devstore-api-production.up.railway.app`
+**Base URL:** `https://devstore-api-3d1l.onrender.com`
 
 ---
 
@@ -17,7 +17,8 @@ API REST completa para e-commerce, desenvolvida como backend do projeto [DevStor
 - **Zod** - validação de dados e variáveis de ambiente
 - **JWT** - autenticação stateless
 - **bcrypt** - hash de senhas
-- **Railway** - deploy e banco em produção
+- **Render** - deploy da API
+- **Neon** - banco PostgreSQL serverless em produção
 
 ---
 
@@ -25,26 +26,26 @@ API REST completa para e-commerce, desenvolvida como backend do projeto [DevStor
 
 ### Público
 
-| Método | Rota | Descrição |
-|--------|------|-----------|
-| GET | /health | Status da API |
-| GET | /products | Lista todos os produtos |
-| GET | /products/:id | Busca produto por ID |
-| GET | /categories | Lista todas as categorias |
-| GET | /categories/:slug | Busca categoria por slug |
-| POST | /register | Cadastro de usuário |
-| POST | /login | Login — retorna token JWT |
+| Método | Rota              | Descrição                 |
+| ------ | ----------------- | ------------------------- |
+| GET    | /health           | Status da API             |
+| GET    | /products         | Lista todos os produtos   |
+| GET    | /products/:id     | Busca produto por ID      |
+| GET    | /categories       | Lista todas as categorias |
+| GET    | /categories/:slug | Busca categoria por slug  |
+| POST   | /register         | Cadastro de usuário       |
+| POST   | /login            | Login — retorna token JWT |
 
 ### Autenticado (Bearer Token)
 
-| Método | Rota | Descrição |
-|--------|------|-----------|
-| POST | /products | Cria produto |
-| PATCH | /products/:id | Atualiza produto |
-| DELETE | /products/:id | Remove produto |
-| POST | /orders | Cria pedido |
-| GET | /orders | Lista pedidos do usuário |
-| GET | /orders/:id | Detalhe de um pedido |
+| Método | Rota          | Descrição                |
+| ------ | ------------- | ------------------------ |
+| POST   | /products     | Cria produto             |
+| PATCH  | /products/:id | Atualiza produto         |
+| DELETE | /products/:id | Remove produto           |
+| POST   | /orders       | Cria pedido              |
+| GET    | /orders       | Lista pedidos do usuário |
+| GET    | /orders/:id   | Detalhe de um pedido     |
 
 ---
 
